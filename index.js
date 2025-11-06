@@ -5,9 +5,10 @@ const { program } = require('commander');
 const superagent = require('superagent');
 
 program
-  .requiredOption('-h, --host <host>')
-  .requiredOption('-p, --port <port>')
-  .requiredOption('-c, --cache <cacheDir>');
+  .requiredOption('-H, --host <host>', 'server host')
+  .requiredOption('-P, --port <port>', 'server port')
+  .requiredOption('-C, --cache <cacheDir>', 'cache directory');
+
 program.parse(process.argv);
 const options = program.opts();
 
