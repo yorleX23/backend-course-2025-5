@@ -12,6 +12,8 @@ program
 program.parse(process.argv);
 const options = program.opts();
 
+console.log('Parsed options:', options);
+
 const HOST = options.host;
 const PORT = Number(options.port);
 const CACHE_DIR = path.resolve(process.cwd(), options.cache);

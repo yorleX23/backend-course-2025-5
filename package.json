@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node index.js --host 127.0.0.1 --port 3000 --cache ./cache",
+  "dev": "nodemon --exec node index.js -- --host 127.0.0.1 --port 3000 --cache ./cache",
     "test": "echo \"Error: no test specified\" && exit 1"
     
   },

@@ -1,15 +1,19 @@
 # Запуск сервера у режимі розробки
-npm run dev -- -h 127.0.0.1 -p 3000 -c ./cache
+npm run dev -- --host 127.0.0.1 --port 3000 --cache ./cache
 
-# PUT (завантаження локального файлу cat.jpg у кеш)
-curl -X PUT --data-binary "@cat.jpg" http://127.0.0.1:3000/200
 
-# GET (отримати з кешу або http.cat)
+# GET — отримати з кешу або з http.cat
 curl http://127.0.0.1:3000/200 --output 200.jpg
 
-# DELETE (видалити з кешу)
-curl -X DELETE http://127.0.0.1:3000/200
+# PUT — додати свою картинку в кеш
+curl -X PUT --data-binary "@mycat.jpg" http://127.0.0.1:3000/999
 
-# GET після видалення (повторне завантаження з http.cat)
-curl http://127.0.0.1:3000/200 --output 200_new.jpg
+# GET — перевірити, чи записалась картинка
+curl http://127.0.0.1:3000/999 --output newcat.jpg
+
+# DELETE — видалити з кешу
+curl -X DELETE http://127.0.0.1:3000/999
+
+# GET — запитати неіснуючий код (поверне Not Found)
+curl http://127.0.0.1:3000/999999 --output test.jpg
 
